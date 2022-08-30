@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guessit/src/results/results_list_view.dart';
 import 'package:hive/hive.dart';
 
 /// Displays detailed information about a SampleItem.
@@ -25,7 +26,18 @@ class _GuessFormViewState extends State<GuessFormView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kronkorken Schätzung'),
+        title: const Text('Bierdeckel Schätzung'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.list),
+            onPressed: () {
+              // Navigate to the settings page. If the user leaves and returns
+              // to the app after it has been killed while running in the
+              // background, the navigation stack is restored.
+              Navigator.restorablePushNamed(context, ResultsListView.routeName);
+            },
+          ),
+        ],
       ),
       body: Form(
         key: _formKey,
@@ -34,7 +46,7 @@ class _GuessFormViewState extends State<GuessFormView> {
           child: Column(
             children: <Widget>[
               const Text(
-                "Wie viele Kronkorken befinden sich im Gefäss?",
+                "Wie viele Bierdeckel befinden sich im Gefäss?",
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -66,7 +78,7 @@ class _GuessFormViewState extends State<GuessFormView> {
                 padding: const EdgeInsets.only(top: 10),
                 child: ElevatedButton(
                     onPressed: onPressed,
-                    child: const Text("Schätzung absenden")),
+                    child: const Text("Schätzung speichern")),
               )
             ],
           ),

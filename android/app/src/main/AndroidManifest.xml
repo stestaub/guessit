@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.guessit">
    <application
-        android:label="guessit"
+        android:label="Bierdeckel Schätzung"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
